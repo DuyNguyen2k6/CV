@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kho Công Cụ Đa Năng - Phong cách iOS</title>
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Text:ital,wght@0,400;0,600&display=swap" rel="stylesheet" />
+<style>
+  body, button, a {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: #f2f2f7;
+    color: #1c1c1e;
+    padding: 30px 20px;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    color: #1c1c1e;
+  }
+  .category {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #007aff;
+    margin-bottom: 20px;
+    border-left: 5px solid #007aff;
+    padding-left: 14px;
+    user-select: none;
+  }
+  ul.tools-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+  }
+  ul.tools-list li {
+    background: #ffffff;
+    border-radius: 28px;
+    box-shadow:
+      0 1px 4px rgba(0,0,0,0.1),
+      0 8px 20px rgba(0,0,0,0.07);
+    padding: 30px 32px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  ul.tools-list li:hover {
+    box-shadow:
+      0 8px 24px rgba(0,0,0,0.12),
+      0 20px 48px rgba(0,0,0,0.15);
+    transform: translateY(-6px);
+  }
+  .tool-info {
+    margin-bottom: 24px;
+  }
+  .tool-info a.tool-link {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #007aff;
+    text-decoration: none;
+    user-select: text;
+  }
+  .tool-info a.tool-link:hover {
+    text-decoration: underline;
+  }
+  .tool-desc {
+    font-size: 1rem;
+    color: #3a3a3c;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* Nút Download tooltip - iOS style */
+  .button {
+    --width: 130px;
+    --height: 42px;
+    --tooltip-height: 42px;
+    --tooltip-width: 120px;
+    --gap-tooltip-to-button: 18px;
+    --button-color: #007aff;
+    --tooltip-color: #fff;
+    width: var(--width);
+    height: var(--height);
+    background: var(--button-color);
+    position: relative;
+    text-align: center;
+    border-radius: 21px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--tooltip-color);
+    cursor: pointer;
+    box-shadow:
+      0 6px 15px rgba(0, 122, 255, 0.5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .button:hover {
+    background: #005bbb;
+    box-shadow:
+      0 10px 25px rgba(0, 91, 187, 0.7);
+  }
+  .button::before {
+    position: absolute;
+    content: attr(data-tooltip);
+    width: var(--tooltip-width);
+    height: var(--tooltip-height);
+    background-color: var(--tooltip-color);
+    font-size: 0.9rem;
+    color: #111;
+    border-radius: 21px;
+    line-height: var(--tooltip-height);
+    bottom: calc(var(--height) + var(--gap-tooltip-to-button));
+    left: calc(50% - var(--tooltip-width) / 2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    pointer-events: none;
+  }
+  .button:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+  .button-wrapper, .text, .icon {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    color: var(--tooltip-color);
+  }
+  .text {
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.4s ease;
+  }
+  .icon {
+    color: var(--tooltip-color);
+    top: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.4s ease;
+  }
+  .icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  .button:hover .text {
+    top: -100%;
+  }
+  .button:hover .icon {
+    top: 0;
+  }
+
+  /* Nút Brutalist Microsoft style cho extension */
+  .brutalist-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 190px;
+    height: 60px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: 700;
+    border: 3px solid #fff;
+    outline: 3px solid #000;
+    box-shadow: 7px 7px 0 #00a4ef;
+    transition: all 0.15s ease-out;
+    padding: 0 22px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    user-select: none;
+  }
+  .brutalist-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    );
+    z-index: 1;
+    transition: none;
+    opacity: 0;
+  }
+  @keyframes slide {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  .brutalist-button:hover::before {
+    opacity: 1;
+    animation: slide 2s infinite;
+  }
+  .brutalist-button:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 11px 11px 0 #000;
+    background-color: #000;
+    color: #fff;
+  }
+  .brutalist-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+  }
+  .ms-logo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease-out;
+    position: relative;
+    z-index: 1;
+  }
+  .brutalist-button:hover .ms-logo {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  .brutalist-button:active .ms-logo {
+    transform: rotate(10deg) scale(0.9);
+  }
+  .ms-logo-square {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+  .ms-logo-square:nth-child(1) {
+    background-color: #f25022;
+  }
+  .ms-logo-square:nth-child(2) {
+    background-color: #7fba00;
+  }
+  .ms-logo-square:nth-child(3) {
+    background-color: #00a4ef;
+  }
+  .ms-logo-square:nth-child(4) {
+    background-color: #ffb900;
+  }
+  .button-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+    transition: transform 0.2s ease-out;
+    position: relative;
+    z-index: 1;
+  }
+  .brutalist-button:hover .button-text {
+    transform: skew(-6deg);
+  }
+  .brutalist-button:active .button-text {
+    transform: skew(6deg);
+  }
+  .button-text span:first-child {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .button-text span:last-child {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    ul.tools-list {
+      grid-template-columns: 1fr;
+    }
+    .brutalist-button {
+      width: 160px;
+      height: 52px;
+      padding: 0 16px;
+    }
+    .button {
+      --width: 110px;
+      --height: 36px;
+      --tooltip-height: 36px;
+      --tooltip-width: 100px;
+    }
+  }
+</style>
+</head>
+<body>
+
+
+<section>
+  <div class="category">Chrome Extensions</div>
+  <ul class="tools-list">
+    <li>
+      <div class="tool-info">
+        <a class="tool-link" href="https://chromewebstore.google.com/detail/highlight-save/ijnojplolageohcdppaaaaffaphpmkio?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">Highlight & Save</a>
+        <p class="tool-desc">Tiện ích mở rộng giúp bạn đánh dấu và lưu nội dung dễ dàng trên trình duyệt Chrome.</p>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/highlight-save/ijnojplolageohcdppaaaaffaphpmkio?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer" class="brutalist-button" aria-label="Download Highlight & Save extension">
+        <div class="ms-logo">
+          <div class="ms-logo-square"></div>
+          <div class="ms-logo-square"></div>
+          <div class="ms-logo-square"></div>
+          <div class="ms-logo-square"></div>
+        </div>
+        <div class="button-text">
+          <span>Get it from</span>
+          <span>Microsoft</span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <div class="tool-info">
+        <a class="tool-link" href="https://chromewebstore.google.com/detail/fkpebgagpomomfmobmjmpkgehjgnogfk?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer">HTML Quick Edit</a>
+        <p class="tool-desc">Chỉnh sửa nội dung trang web nhanh bằng chuột phải
+.</p>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/fkpebgagpomomfmobmjmpkgehjgnogfk?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer" class="brutalist-button" aria-label="Download Extension 2">
+        <div class="ms-logo">
+          <div class="ms-logo-square"></div>
+          <div class="ms-logo-square"></div>
+          <div class="ms-logo-square"></div>
+          <div class="ms-logo-square"></div>
+        </div>
+        <div class="button-text">
+          <span>Get it from</span>
+          <span>Microsoft</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <div class="category">Ứng dụng Python trên GitHub</div>
+  <ul class="tools-list">
+    <li>
+      <div class="tool-info">
+        <a class="tool-link" href="https://github.com/DuyNguyen2k6/PyDeploy_App" target="_blank" rel="noopener noreferrer">PyDeploy_App - Ứng dụng deploy Python</a>
+        <p class="tool-desc">Ứng dụng deploy code Python dễ dàng, tự động hóa các bước phức tạp.</p>
+      </div>
+      <a href="https://github.com/DuyNguyen2k6/PyDeploy_App" target="_blank" rel="noopener noreferrer" class="button" data-tooltip="Khoảng 10Mb" aria-label="Download PyDeploy_App">
+        <div class="button-wrapper">
+          <div class="text">Download</div>
+          <span class="icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
+          </span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <div class="tool-info">
+        <a class="tool-link" href="https://github.com/DuyNguyen2k6/ADB-App-Remover" target="_blank" rel="noopener noreferrer">ADB-App-Remover - Ứng dụng gỡ app qua ADB</a>
+        <p class="tool-desc">Công cụ gỡ ứng dụng Android bằng ADB, tiện lợi cho việc quản lý thiết bị.</p>
+      </div>
+      <a href="https://github.com/DuyNguyen2k6/ADB-App-Remover" target="_blank" rel="noopener noreferrer" class="button" data-tooltip="Khoảng 8Mb" aria-label="Download ADB-App-Remover">
+        <div class="button-wrapper">
+          <div class="text">Download</div>
+          <span class="icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
+          </span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
+
+</body>
+</html>
