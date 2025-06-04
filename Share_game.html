@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GameShare - Chia Sẻ Game Miễn Phí</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Text:ital,wght@0,400;0,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: #f2f2f7;
+      color: #1c1c1e;
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover, a:focus {
+      outline: none;
+    }
+    nav {
+      background-color: #fff;
+      padding: 16px 24px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+    .nav-container {
+      max-width: 720px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #007aff;
+      user-select: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 6px 12px;
+      border-radius: 12px;
+      color: #007aff;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .nav-links a:hover, .nav-links a:focus {
+      background-color: #d0e8ff;
+      color: #004a99;
+    }
+    main.games {
+      max-width: 720px;
+      margin: 100px auto 40px; /* margin-top đủ để tránh nav */
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .game-card {
+      background: #fff;
+      border-radius: 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+    .game-card:hover, .game-card:focus-within {
+      box-shadow: 0 14px 32px rgba(0,0,0,0.15);
+      transform: translateY(-6px);
+      outline: none;
+    }
+    .game-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 28px 28px 0 0;
+      user-select: none;
+    }
+    .game-card h2 {
+      color: #1c1c1e;
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin: 16px 20px 8px;
+    }
+    .game-card p {
+      color: #3a3a3c;
+      font-size: 1rem;
+      margin: 0 20px 20px;
+      flex-grow: 1;
+      line-height: 1.4;
+    }
+    .download-btn {
+      margin: 0 20px 20px;
+      padding: 12px 24px;
+      background-color: #007aff;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 24px;
+      font-weight: 600;
+      text-align: center;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 15px rgba(0, 122, 255, 0.5);
+      user-select: none;
+      display: inline-block;
+    }
+    .download-btn:hover, .download-btn:focus {
+      background-color: #005bb5;
+      box-shadow: 0 10px 25px rgba(0, 91, 187, 0.7);
+      outline: none;
+    }
+    .download-btn:active {
+      transform: scale(0.95);
+    }
+    footer {
+      background: #fff;
+      color: #3a3a3c;
+      text-align: center;
+      padding: 20px;
+      max-width: 720px;
+      margin: 40px auto 40px;
+      border-radius: 28px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      user-select: none;
+    }
+    @media (max-width: 768px) {
+      .nav-container {
+        justify-content: center;
+        gap: 16px;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      main.games {
+        margin: 80px auto 40px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">GameShare</a>
+      <ul class="nav-links">
+        <li><a href="#games">Game</a></li>
+        <li><a href="https://www.steamtools.net/" target="_blank" rel="noopener noreferrer">Steam Tool</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="games" id="games">
+    <article class="game-card" tabindex="0">
+      <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/02/game-hot-thumb.jpg" alt="Kho Game Hot" />
+      <h2>Kho Game!</h2>
+      <p>Khám phá và chia sẻ những trò chơi hấp dẫn từ cộng đồng game thủ, từ game indie đến các tựa game bom tấn.</p>
+      <a href="https://drive.google.com/drive/folders/1-_XCAYVmz1QGdAqNu65GnbLd9fNMmrCn" target="_blank" rel="noopener noreferrer" class="download-btn" role="button">🎮 Tải game tại đây</a>
+    </article>
+
+    <article class="game-card" tabindex="0">
+      <img src="https://i.ytimg.com/vi/8uIOxemM9UI/maxresdefault.jpg" alt="Logo Steam mới" />
+      <h2>SteamTools.net</h2>
+      <p>Trang web cung cấp công cụ hỗ trợ người dùng Steam như tra cứu Steam ID, theo dõi giá game, quản lý kho đồ.</p>
+      <a href="https://www.steamtools.net/" target="_blank" rel="noopener noreferrer" class="download-btn" role="button">🔧 Tải Steam Tool</a>
+    </article>
+
+
+	
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GameShare. Tất cả quyền được bảo lưu.</p>
+  </footer>
+</body>
+
+</html>
