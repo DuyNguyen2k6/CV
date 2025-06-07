@@ -315,9 +315,17 @@
       --tooltip-width: 100px;
     }
   }
+
+  /* MỚI: Dạng danh sách cho Python Apps */
+  ul.tools-list-listview {
+    display: block; /* không grid nữa */
+    padding-left: 0;
+  }
+  ul.tools-list-listview li {
+    margin-bottom: 20px;
+  }
 </style>
 </head>
-<body>
 <body>
 
 <nav style="margin-bottom: 30px; text-align: center;">
@@ -335,9 +343,6 @@
   onmouseout="this.style.backgroundColor=''; this.style.color='#007aff';"
   >← Về trang cá nhân</a>
 </nav>
-
-<!-- Phần còn lại giữ nguyên như hiện tại -->
-
 
 <section>
   <div class="category">Chrome Extensions</div>
@@ -420,7 +425,7 @@
 
 <section>
   <div class="category">Ứng dụng Python trên GitHub</div>
-  <ul class="tools-list">
+  <ul class="tools-list tools-list-listview">
     <li>
       <div class="tool-info">
         <a class="tool-link" href="https://github.com/DuyNguyen2k6/PyDeploy_App" target="_blank" rel="noopener noreferrer">PyDeploy_App </a>
@@ -449,7 +454,6 @@
         </div>
       </a>
     </li>
-    <!-- Mới thêm -->
     <li>
       <div class="tool-info">
         <a class="tool-link" href="https://github.com/DuyNguyen2k6/AutoMessenger_App" target="_blank" rel="noopener noreferrer">AutoMessenger_App </a>
@@ -478,9 +482,25 @@
         </div>
       </a>
     </li>
+
+    <!-- Mục mới thêm -->
+    <li>
+      <div class="tool-info">
+        <a class="tool-link" href="https://github.com/DuyNguyen2k6/GIF-Overlay" target="_blank" rel="noopener noreferrer">GIF-Overlay</a>
+        <p class="tool-desc">Ứng dụng hiển thị ảnh GIF nổi trên màn hình với nhiều tùy chọn điều chỉnh tiện lợi.</p>
+      </div>
+      <a href="https://github.com/DuyNguyen2k6/GIF-Overlay" target="_blank" rel="noopener noreferrer" class="button" data-tooltip="Khoảng 5Mb" aria-label="Download GIF-Overlay">
+        <div class="button-wrapper">
+          <div class="text">Download</div>
+          <span class="icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
+          </span>
+        </div>
+      </a>
+    </li>
+
   </ul>
 </section>
 
 </body>
-
 </html>
