@@ -6,7 +6,10 @@ class IOSStyleAppEditor:
     def __init__(self, root):
         self.root = root
         self.root.title("Quản lý Kho Công Cụ")
-        self.root.geometry("900x650")
+
+        # Mở cửa sổ ở trạng thái tối đa (maximize)
+        self.root.state('zoomed')
+
         self.root.configure(bg="#F9F9F9")
 
         self.file_path = tk.StringVar()
@@ -60,10 +63,13 @@ class IOSStyleAppEditor:
         form_frame = tk.Frame(self.root, bg="#F9F9F9")
         form_frame.pack(fill='x', padx=20, pady=20)
 
+        # Cho phép cột 1 (input) co giãn theo chiều ngang
+        form_frame.grid_columnconfigure(1, weight=1)
+
         tk.Label(form_frame, text="Loại (extension/python):", bg="#F9F9F9", fg="#8E8E93", font=self.font_label).grid(row=0, column=0, sticky='e', pady=10)
         self.type_var = tk.StringVar(value="extension")
-        type_combo = ttk.Combobox(form_frame, textvariable=self.type_var, values=["extension", "python"], state="readonly", width=20, font=self.font_entry)
-        type_combo.grid(row=0, column=1, pady=10, sticky='w')
+        type_combo = ttk.Combobox(form_frame, textvariable=self.type_var, values=["extension", "python"], state="readonly", font=self.font_entry)
+        type_combo.grid(row=0, column=1, pady=10, sticky='ew')
 
         labels = ["Tên App:", "Icon URL:", "Liên kết:", "Mô tả:"]
         self.name_var = tk.StringVar()
@@ -74,7 +80,8 @@ class IOSStyleAppEditor:
 
         for i, (label, var) in enumerate(zip(labels, vars_), start=1):
             tk.Label(form_frame, text=label, bg="#F9F9F9", fg="#8E8E93", font=self.font_label).grid(row=i, column=0, sticky='e', pady=10)
-            tk.Entry(form_frame, textvariable=var, width=65, font=self.font_entry, relief='solid', bd=1).grid(row=i, column=1, pady=10, sticky='w')
+            ent = tk.Entry(form_frame, textvariable=var, font=self.font_entry, relief='solid', bd=1)
+            ent.grid(row=i, column=1, pady=10, sticky='ew')
 
         btn_frame = tk.Frame(self.root, bg="#F9F9F9")
         btn_frame.pack(pady=15)
