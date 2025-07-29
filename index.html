@@ -3,506 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trang cá nhân & Kho Game & Kho Công Cụ</title>
+  <title>CV Nguyễn Minh Duy</title>
   <style>
-    
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #222;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 40px 20px 20px;
-      display: flex;
-      justify-content: center;
-    }
-    main {
-      max-width: 720px;
-      width: 100%;
-    }
-    nav.tabs {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      user-select: none;
-    }
-    nav.tabs button {
-      padding: 10px 20px;
-      border: 1.8px solid #007acc;
-      background: white;
-      color: #007acc;
-      font-weight: 600;
-      font-size: 1rem;
-      border-radius: 24px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    nav.tabs button.active,
-    nav.tabs button:hover:not(.active) {
-      background-color: #007acc;
-      color: white;
+      padding: 0;
+      background: #f2f4f8;
+      color: #1a1a1a;
     }
 
-    .tab-content {
-      display: none;
-      background: white;
-      padding: 24px;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    }
-    .tab-content.active {
-      display: block;
-    }
-
-    /* --- Trang cá nhân đơn giản --- */
     .container {
-      text-align: center;
+      max-width: 960px;
+      margin: auto;
+      padding: 40px 20px;
     }
-    .avatar {
-      width: 120px;
-      height: 120px;
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       object-fit: cover;
+      border: 2px solid #00bcd4;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: #003147;
+    }
+
+    .contact-info-section {
+      background: #ffffff;
+      padding: 20px 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+
+    .contact-info div {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .contact-info a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      border-left: 5px solid #00bcd4;
+      padding-left: 12px;
       margin-bottom: 20px;
     }
-    h1 {
-      margin: 0 0 8px;
-      font-weight: bold;
-      font-size: 1.8rem;
-    }
-    .title {
-      margin: 0 0 24px;
-      font-weight: normal;
-      font-size: 1rem;
-      color: #555;
-    }
-    .intro {
-      font-size: 1rem;
-      margin-bottom: 24px;
-      line-height: 1.4;
-      color: #333;
-    }
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    .skill {
-      background: #e0f0ff;
-      padding: 8px 14px;
-      border-radius: 20px;
-      color: #007acc;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .contact {
-      font-size: 0.95rem;
-    }
-    .contact a {
-      color: #007acc;
-      text-decoration: none;
-    }
-    .contact a:hover {
-      text-decoration: underline;
+
+    ul {
+      padding-left: 20px;
     }
 
-    /* --- Kho Game --- */
-    .games {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+    li {
+      margin-bottom: 12px;
+      line-height: 1.6;
     }
-    .game-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      transition: box-shadow 0.3s ease;
+
+    p {
+      line-height: 1.7;
     }
-    .game-card:hover {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .game-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 12px 12px 0 0;
-      user-select: none;
-    }
-    .game-card h2 {
-      font-size: 1.25rem;
-      color: #222;
-      margin: 12px 16px 6px;
-    }
-    .game-card p {
-      color: #444;
-      font-size: 0.95rem;
-      margin: 0 16px 16px;
-      flex-grow: 1;
-      line-height: 1.3;
-    }
-    .download-btn {
-      margin: 0 16px 16px;
-      padding: 10px 18px;
-      background-color: #007acc;
-      color: white;
-      font-size: 1rem;
-      border-radius: 20px;
-      font-weight: 600;
+
+    .footer {
       text-align: center;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    .download-btn:hover {
-      background-color: #005a99;
-    }
-
-    /* --- Kho công cụ --- */
-    .category {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #007acc;
-      margin-bottom: 16px;
-      border-left: 4px solid #007acc;
-      padding-left: 12px;
-      user-select: none;
-    }
-    ul.tools-list {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    ul.tools-list li {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-      padding: 20px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: box-shadow 0.3s ease;
-    }
-    ul.tools-list li:hover {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .tool-info {
-      margin-bottom: 16px;
-    }
-    .tool-link {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #007acc;
-      text-decoration: none;
-      user-select: text;
-    }
-    .tool-link:hover {
-      text-decoration: underline;
-    }
-    .tool-desc {
-      font-size: 0.95rem;
-      color: #444;
-      margin-top: 8px;
-      line-height: 1.3;
-    }
-    .button {
-      width: 120px;
-      height: 38px;
-      background: #007acc;
-      border-radius: 20px;
-      color: white;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      text-decoration: none;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    .button:hover {
-      background: #005a99;
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
     }
 
-    /* Responsive */
     @media (max-width: 600px) {
-      nav.tabs {
+      header {
         flex-direction: column;
-        gap: 8px;
+        align-items: flex-start;
       }
-      .games, ul.tools-list {
-        grid-template-columns: 1fr;
+
+      header h1 {
+        font-size: 1.8rem;
       }
-      .game-card img {
-        height: 140px;
+
+      header img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .section, .contact-info-section {
+        padding: 16px;
       }
     }
-	
   </style>
 </head>
 <body>
-  <main>
-    <nav class="tabs" role="tablist" aria-label="Chuyển đổi nội dung">
-      <button class="active" role="tab" aria-selected="true" aria-controls="profile" id="tab-profile">Trang Cá Nhân</button>
-      <button role="tab" aria-selected="false" aria-controls="games" id="tab-games">Kho Game</button>
-      <button role="tab" aria-selected="false" aria-controls="tools" id="tab-tools">Kho Công Cụ</button>
-    </nav>
 
-    <section id="profile" class="tab-content active" role="tabpanel" aria-labelledby="tab-profile">
-      <div class="container">
-        <img src="https://avatars.githubusercontent.com/u/193381393?v=4" alt="Avatar Nguyễn Minh Duy" class="avatar" />
-        <h1>Nguyễn Minh Duy</h1>
-        <p class="title">Developer & Creator | Passionate about Building Tools and Software</p>
-        <p class="intro">
-          I am Duy, a passionate software developer dedicated to creating tools and products that enhance work efficiency and everyday life. I am always seeking new challenges to learn from and to continuously grow myself every day.
-        </p>
-        <div class="skills" aria-label="Danh sách kỹ năng">
-          <div class="skill">JavaScript</div>
-          <div class="skill">Python</div>
-          <div class="skill">React</div>
-          <div class="skill">Node.js</div>
-          <div class="skill">Docker</div>
-          <div class="skill">C#</div>
-        </div>
-        <p>
-	  <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 20px 0;">
-  <img src="https://a.slack-edge.com/80588/img/plugins/github/service_512.png" alt="GitHub Slack Plugin Icon" style="width:24px; height:24px;" />
-  <a href="https://github.com/DuyNguyen2k6" target="_blank" rel="noopener noreferrer" style="color: #000; font-weight:600; text-decoration:none;">
-    Github
-  </a>
-</div>
-<div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 20px 0;">
-  <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook Icon" style="width:24px; height:24px;" />
-  <a href="https://www.facebook.com/S999999" target="_blank" rel="noopener noreferrer" style="color: #1877F2;; font-weight:600; text-decoration:none;">
-    Facebook
-  </a>
-</div>
+  <div class="container">
+    <header>
+      <img src="https://avatars.githubusercontent.com/u/217141310?s=400&u=0a8c2c785b31a77a792f438339a32f0d3b267366&v=4" alt="Ảnh đại diện Nguyễn Minh Duy" />
+      <h1>Nguyễn Minh Duy</h1>
+    </header>
 
-
-    </p>
-		<div class="contact">
-          Liên hệ: <a href="mailto:ngduy10102006@gmail.com">ngduy10102006@gmail.com</a>
+    <section class="contact-info-section">
+      <div class="contact-info">
+        <div>Email: <a href="mailto:ngduy10102006@gmail.com">ngduy10102006@gmail.com</a></div>
+        <div>Điện thoại: <a href="tel:+84329200210">0329200210</a></div>
+        <div>Facebook:<br/><a href="https://www.facebook.com/S999999" target="_blank">facebook.com/S999999</a></div>
+        <div>GreasyFork:<br/><a href="https://greasyfork.org/users/1485109" target="_blank">greasyfork.org/users/1485109</a></div>
+        <div>SourceForge:<br/><a href="https://sourceforge.net/u/duy1nuis/" target="_blank">sourceforge.net/u/duy1nuis/</a></div>
+		<div>Kho Apps:<br/><a href="https://49f149159.github.io/app" target="_blank">49f149159.github.io/app</a></div>
+        <div>GitHub:<br/>
+          <a href="https://github.com/49F149159" target="_blank">49F149159</a> |
+          <a href="https://github.com/DuyNguyen2k6" target="_blank">DuyNguyen2k6</a>
         </div>
       </div>
     </section>
 
-    <section id="games" class="tab-content" role="tabpanel" aria-labelledby="tab-games">
-      <div class="games" id="games-list">
-        <article class="game-card" tabindex="0">
-          <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/02/game-hot-thumb.jpg" alt="Kho Game Hot" />
-          <h2>Kho Game!</h2>
-          <p>Khám phá và chia sẻ những trò chơi hấp dẫn từ cộng đồng game thủ, từ game indie đến các tựa game bom tấn.</p>
-          <a href="https://drive.google.com/drive/folders/1-_XCAYVmz1QGdAqNu65GnbLd9fNMmrCn" target="_blank" rel="noopener noreferrer" class="download-btn">🎮 Tải game tại đây</a>
-        </article>
-
-        <article class="game-card" tabindex="0">
-          <img src="https://i.ytimg.com/vi/8uIOxemM9UI/maxresdefault.jpg" alt="Logo Steam mới" />
-          <h2>SteamTools.net</h2>
-          <p>Trang web cung cấp công cụ hỗ trợ người dùng Steam như tra cứu Steam ID, theo dõi giá game, quản lý kho đồ.</p>
-          <a href="https://www.steamtools.net/" target="_blank" rel="noopener noreferrer" class="download-btn">🔧 Tải Steam Tool</a>
-        </article>
-      </div>
+    <section class="section">
+      <h2>Tóm tắt bản thân</h2>
+      <p>
+        🤑🤓😭😄😱😐🤔🤫🤨🧐
+      </p>
     </section>
 
-    <section id="tools" class="tab-content" role="tabpanel" aria-labelledby="tab-tools">
-  <div>
-    <div class="category category-extension">Chrome Extensions</div>
-    <ul class="tools-list">
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://github.com/DuyNguyen2k6/highligh-save_Extension/blob/main/icon.png?raw=true" alt="Highlight & Save Icon" style="width:24px; height:24px;" />
-          <a href="https://chromewebstore.google.com/detail/highlight-save/ijnojplolageohcdppaaaaffaphpmkio?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer" class="tool-link extension-link">
-            Highlight & Save
-          </a>
-        </div>
-        <p class="tool-desc">Tiện ích giúp bạn đánh dấu và lưu nội dung dễ dàng trên trình duyệt Chrome.</p>
-      </li>
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://lh3.googleusercontent.com/C_wHOEFII1MUq2D66jCpo1pvJIc8l-7cDL8JMrLfq0GCdlesEhh6ujSzhEhPuueRtZ5xLFmIkoTZnOQflj2CdIHM_Rw=s120" alt="HTML Quick Edit Icon" style="width:24px; height:24px;" />
-          <a href="https://chromewebstore.google.com/detail/fkpebgagpomomfmobmjmpkgehjgnogfk?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer" class="tool-link extension-link">
-            HTML Quick Edit
-          </a>
-        </div>
-        <p class="tool-desc">Chỉnh sửa nội dung trang web nhanh bằng chuột phải.</p>
-      </li>
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://lh3.googleusercontent.com/n3x_UCx-6e739kLD7GagPFw7meDnWMNDaUS_oJFmCH8XNj0Jqz0Ok4M2pkLZnOE1SZsoBJO6PBGT8NTbIkdCsRyqmw=s120" alt="20-20-20 Eye Care Reminder Icon" style="width:24px; height:24px;" />
-          <a href="https://chromewebstore.google.com/detail/20-20-20-eye-care-reminde/indlfmlgdlapbagjahnalcfolfllgbhn?utm_source=item-share-cb" target="_blank" rel="noopener noreferrer" class="tool-link extension-link">
-            20-20-20 Eye Care Reminder
-          </a>
-        </div>
-        <p class="tool-desc">Tiện ích nhắc nghỉ mắt theo quy tắc 20-20-20 giúp bảo vệ mắt khi làm việc máy tính lâu.</p>
-      </li>
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://lh3.googleusercontent.com/KYhGi1gCvLtHRxCWRWEBSpR6ErZAM8iKxcJr144VZ6xSflJIJ3tRJ8eYEyaWLYMJzZy-tZzL_QvIE1ILlX4OMOURvR4=s120" alt="Birthday Countdown Multi Icon" style="width:24px; height:24px;" />
-          <a href="https://chromewebstore.google.com/detail/birthday-countdown-multi/kaecfkaiakhmjnehamfjgmkcohnbaoej?hl=vi&utm_source=ext_sidebar" target="_blank" rel="noopener noreferrer" class="tool-link extension-link">
-            Birthday Countdown Multi
-          </a>
-        </div>
-        <p class="tool-desc">Tiện ích đếm ngược đến ngày sinh nhật đa năng, hỗ trợ nhiều người và nhắc nhở kịp thời.</p>
-      </li>
-	  <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://raw.githubusercontent.com/DuyNguyen2k6/YouTube-Progress-Bar-Customizer/refs/heads/main/icon.png" alt="YouTube-Progress-Bar-Customizer Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/YouTube-Progress-Bar-Customizer" target="_blank" rel="noopener noreferrer" class="tool-link extension-link">
-            YouTube-Progress-Bar-Customizer
-          </a>
-        </div>
-        <p class="tool-desc">Thay đổi thanh tiến trình youtube.</p>
-      </li>
     
-      
-      
-      
-      
-      
-      
-      
-      
-      </li>
 
-      </li>
-
-      </li>
-
-      </li>
-
-      </li>
-
-      </li>
-
-      </li>
-
-      </li>
-
-      
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://github.com/DuyNguyen2k6/YT-MP3/blob/main/icon128.png?raw=true" alt="YT-MP3 Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/YT-MP3" target="_blank" rel="noopener noreferrer" class="tool-link extension-link">
-            YT-MP3
-          </a>
-        </div>
-        <p class="tool-desc">Tải MP3 youtube con cặc dcm</p>
-      </li>
-
-      </li>
-
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://github.com/DuyNguyen2k6/SaveNOTE_Extension/blob/main/icon.png?raw=true" alt="SaveNOTE Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/SaveNOTE_Extension" target="_blank" rel="noopener noreferrer" class="tool-link extension-link">
-            SaveNOTE
-          </a>
-        </div>
-        <p class="tool-desc">Ghi chú nhanh văn bản và hình ảnh trên trình duyệt</p>
-      </li>
-
-      
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://github.com/DuyNguyen2k6/YT-Prenium-Logo/blob/main/Logo_P_red_bg_white_P.png?raw=true" alt="YT Prenium Logo Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/YT-Prenium-Logo" target="_blank" rel="noopener noreferrer" class="tool-link extension-link">
-            YT Prenium Logo
-          </a>
-        </div>
-        <p class="tool-desc">Thay đổi logo youtube thành premium</p>
-      </li>
-
-      </li>
-</ul>
+    <div class="footer">
+      © 2025 Nguyễn Minh Duy
+    </div>
   </div>
-  <div>
-    <div class="category category-python">Ứng dụng Python trên GitHub</div>
-    <ul class="tools-list">
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://github.com/DuyNguyen2k6/PyDeploy_App/raw/main/app_icon.png" alt="PyDeploy_App Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/PyDeploy_App" target="_blank" rel="noopener noreferrer" class="tool-link python-link">
-            PyDeploy_App
-          </a>
-        </div>
-        <p class="tool-desc">Ứng dụng deploy code Python dễ dàng, tự động hóa các bước phức tạp.</p>
-      </li>
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://github.com/DuyNguyen2k6/ADB-App-Remover/raw/main/ADB-App-Remover.png" alt="ADB-App-Remover Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/ADB-App-Remover" target="_blank" rel="noopener noreferrer" class="tool-link python-link">
-            ADB-App-Remover
-          </a>
-        </div>
-        <p class="tool-desc">Công cụ gỡ ứng dụng Android bằng ADB, tiện lợi cho việc quản lý thiết bị.</p>
-      </li>
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://raw.githubusercontent.com/DuyNguyen2k6/AutoMessenger_App/refs/heads/main/ICON%20AUTO%20MESS.ico" alt="AutoMessenger_App Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/AutoMessenger_App" target="_blank" rel="noopener noreferrer" class="tool-link python-link">
-            AutoMessenger_App
-          </a>
-        </div>
-        <p class="tool-desc">Ứng dụng tự động gửi tin nhắn theo lịch trình, hỗ trợ nhiều nền tảng mạng xã hội.</p>
-      </li>
-      
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://raw.githubusercontent.com/DuyNguyen2k6/Shutdown-timer_V2_App/refs/heads/main/app_icon.ico" alt="Shutdown-timer_V2_App Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/Shutdown-timer_V2_App" target="_blank" rel="noopener noreferrer" class="tool-link python-link">
-            Shutdown-timer_V2_App
-          </a>
-        </div>
-        <p class="tool-desc">Ứng dụng Windows hẹn giờ tắt máy dễ thương cute</p>
-      </li>
-
-      </li>
-      <li>
-        <div class="tool-info" style="display:flex; align-items:center; gap:10px;">
-          <img src="https://github.com/DuyNguyen2k6/GIF-Overlay/raw/main/icon.png" alt="GIF-Overlay Icon" style="width:24px; height:24px;" />
-          <a href="https://github.com/DuyNguyen2k6/GIF-Overlay" target="_blank" rel="noopener noreferrer" class="tool-link python-link">
-            GIF-Overlay
-          </a>
-        </div>
-        <p class="tool-desc">Ứng dụng hiển thị ảnh GIF nổi trên màn hình với nhiều tùy chọn điều chỉnh tiện lợi.</p>
-      </li>
-    
-      
-      </li>
-</ul>
-  </div>
-</section>
-
-
-  </main>
 
   <script>
-    const tabs = document.querySelectorAll('nav.tabs button');
-    const contents = document.querySelectorAll('.tab-content');
+    const hackerLines = [
+      "Khởi động CV Nguyễn Minh Duy...",
+      "Tải module kỹ năng...",
+      "Kết nối GitHub: THÀNH CÔNG",
+      "Xác minh GreasyFork...",
+      "Xác thực terminal...",
+      "Gỡ giới hạn trình duyệt...",
+      "Đang dựng cấu trúc HTML...",
+      "Hoàn tất! Đang tải giao diện..."
+    ];
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Xóa active ở tất cả tab và nội dung
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        contents.forEach(c => c.classList.remove('active'));
+    const loader = document.getElementById('hacker-loader');
+    let lineIndex = 0;
 
-        // Thêm active cho tab được click và nội dung tương ứng
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        const id = tab.getAttribute('aria-controls');
-        document.getElementById(id).classList.add('active');
-      });
+    function typeLine() {
+      if (lineIndex < hackerLines.length) {
+        loader.innerHTML += "> " + hackerLines[lineIndex] + "\n";
+        loader.scrollTop = loader.scrollHeight;
+        lineIndex++;
+        setTimeout(typeLine, 300 + Math.random() * 300);
+      } else {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 1000);
+      }
+    }
+
+    window.addEventListener('load', () => {
+      typeLine();
     });
   </script>
 </body>
